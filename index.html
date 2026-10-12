@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Divisão - Evangelização CIAS</title>
+    <title>Evangelização CIAS</title>
     <!-- Biblioteca para gerar a imagem (html2canvas) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -127,7 +127,8 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             position: relative;
             box-sizing: border-box;
-            background-image: url('https://img.freepik.com/vetores-gratis/fundo-de-campo-de-grama-com-arvores-e-ceu_1308-29730.jpg'); 
+            /* A imagem agora é local, para evitar erro de CORS */
+            background-image: url('fundo.jpg'); 
             background-size: cover;
             background-position: center;
             color: #2c3e50;
@@ -222,8 +223,11 @@
                     <label>Professora para Mensagem:</label>
                     <input type="text" id="msg0a3" placeholder="Nome da professora" required>
 
-                    <label>Professora no Preparo:</label>
-                    <input type="text" id="sub0a3" placeholder="Nome da professora no preparo" required>
+                    <label>No Preparo (Louvor):</label>
+                    <input type="text" id="preparoLouvor0a3" placeholder="Nome da professora" required>
+
+                    <label>No Preparo (Mensagem):</label>
+                    <input type="text" id="preparoMsg0a3" placeholder="Nome da professora" required>
                 </div>
 
                 <!-- Classe das Crianças -->
@@ -237,8 +241,11 @@
                     <label>Professora para Mensagem:</label>
                     <input type="text" id="msgCriancas" placeholder="Nome da professora" required>
 
-                    <label>Professora no Preparo:</label>
-                    <input type="text" id="subCriancas" placeholder="Nome da professora no preparo" required>
+                    <label>No Preparo (Louvor):</label>
+                    <input type="text" id="preparoLouvorCriancas" placeholder="Nome da professora" required>
+
+                    <label>No Preparo (Mensagem):</label>
+                    <input type="text" id="preparoMsgCriancas" placeholder="Nome da professora" required>
                 </div>
 
                 <!-- Classe dos Intermediários -->
@@ -252,8 +259,11 @@
                     <label>Professora para Mensagem:</label>
                     <input type="text" id="msgInter" placeholder="Nome da professora" required>
 
-                    <label>Professora no Preparo:</label>
-                    <input type="text" id="subInter" placeholder="Nome da professora no preparo" required>
+                    <label>No Preparo (Louvor):</label>
+                    <input type="text" id="preparoLouvorInter" placeholder="Nome da professora" required>
+
+                    <label>No Preparo (Mensagem):</label>
+                    <input type="text" id="preparoMsgInter" placeholder="Nome da professora" required>
                 </div>
 
                 <!-- Classe das Adolescentes -->
@@ -267,8 +277,11 @@
                     <label>Professora para Mensagem:</label>
                     <input type="text" id="msgAdol" placeholder="Nome da professora" required>
 
-                    <label>Professora no Preparo:</label>
-                    <input type="text" id="subAdol" placeholder="Nome da professora no preparo" required>
+                    <label>No Preparo (Louvor):</label>
+                    <input type="text" id="preparoLouvorAdol" placeholder="Nome da professora" required>
+
+                    <label>No Preparo (Mensagem):</label>
+                    <input type="text" id="preparoMsgAdol" placeholder="Nome da professora" required>
                 </div>
 
                 <button type="button" onclick="atualizarCartao()">👁️ Visualizar Cartão</button>
@@ -288,7 +301,8 @@
                         <p>📅 18/10/2026 às 17h30</p>
                         <p>🎵 Louvor: <span class="destaque-nome" id="outLouvor0a3">A definir</span></p>
                         <p>📖 Mensagem: <span class="destaque-nome" id="outMsg0a3">A definir</span></p>
-                        <p>🔄 No Preparo: <span class="destaque-nome" id="outSub0a3">A definir</span></p>
+                        <p>🔄 No Preparo (L): <span class="destaque-nome" id="outPrepLouvor0a3">A definir</span></p>
+                        <p>🔄 No Preparo (M): <span class="destaque-nome" id="outPrepMsg0a3">A definir</span></p>
                     </div>
 
                     <div class="item-classe">
@@ -296,7 +310,8 @@
                         <p>📅 18/10/2026 às 17h30</p>
                         <p>🎵 Louvor: <span class="destaque-nome" id="outLouvorCriancas">A definir</span></p>
                         <p>📖 Mensagem: <span class="destaque-nome" id="outMsgCriancas">A definir</span></p>
-                        <p>🔄 No Preparo: <span class="destaque-nome" id="outSubCriancas">A definir</span></p>
+                        <p>🔄 No Preparo (L): <span class="destaque-nome" id="outPrepLouvorCriancas">A definir</span></p>
+                        <p>🔄 No Preparo (M): <span class="destaque-nome" id="outPrepMsgCriancas">A definir</span></p>
                     </div>
 
                     <div class="item-classe">
@@ -304,7 +319,8 @@
                         <p>📅 18/10/2026 às 16h00</p>
                         <p>🎵 Louvor: <span class="destaque-nome" id="outLouvorInter">A definir</span></p>
                         <p>📖 Mensagem: <span class="destaque-nome" id="outMsgInter">A definir</span></p>
-                        <p>🔄 No Preparo: <span class="destaque-nome" id="outSubInter">A definir</span></p>
+                        <p>🔄 No Preparo (L): <span class="destaque-nome" id="outPrepLouvorInter">A definir</span></p>
+                        <p>🔄 No Preparo (M): <span class="destaque-nome" id="outPrepMsgInter">A definir</span></p>
                     </div>
 
                     <div class="item-classe">
@@ -312,7 +328,8 @@
                         <p>📅 01/11/2026 às 17h00</p>
                         <p>🎵 Louvor: <span class="destaque-nome" id="outLouvorAdol">A definir</span></p>
                         <p>📖 Mensagem: <span class="destaque-nome" id="outMsgAdol">A definir</span></p>
-                        <p>🔄 No Preparo: <span class="destaque-nome" id="outSubAdol">A definir</span></p>
+                        <p>🔄 No Preparo (L): <span class="destaque-nome" id="outPrepLouvorAdol">A definir</span></p>
+                        <p>🔄 No Preparo (M): <span class="destaque-nome" id="outPrepMsgAdol">A definir</span></p>
                     </div>
                 </div>
             </div>
@@ -327,36 +344,44 @@
             // Pega os valores dos inputs
             const louvor0a3 = document.getElementById('louvor0a3').value || "A definir";
             const msg0a3 = document.getElementById('msg0a3').value || "A definir";
-            const sub0a3 = document.getElementById('sub0a3').value || "A definir";
+            const prepLouvor0a3 = document.getElementById('preparoLouvor0a3').value || "A definir";
+            const prepMsg0a3 = document.getElementById('preparoMsg0a3').value || "A definir";
             
             const louvorCriancas = document.getElementById('louvorCriancas').value || "A definir";
             const msgCriancas = document.getElementById('msgCriancas').value || "A definir";
-            const subCriancas = document.getElementById('subCriancas').value || "A definir";
+            const prepLouvorCriancas = document.getElementById('preparoLouvorCriancas').value || "A definir";
+            const prepMsgCriancas = document.getElementById('preparoMsgCriancas').value || "A definir";
             
             const louvorInter = document.getElementById('louvorInter').value || "A definir";
             const msgInter = document.getElementById('msgInter').value || "A definir";
-            const subInter = document.getElementById('subInter').value || "A definir";
+            const prepLouvorInter = document.getElementById('preparoLouvorInter').value || "A definir";
+            const prepMsgInter = document.getElementById('preparoMsgInter').value || "A definir";
             
             const louvorAdol = document.getElementById('louvorAdol').value || "A definir";
             const msgAdol = document.getElementById('msgAdol').value || "A definir";
-            const subAdol = document.getElementById('subAdol').value || "A definir";
+            const prepLouvorAdol = document.getElementById('preparoLouvorAdol').value || "A definir";
+            const prepMsgAdol = document.getElementById('preparoMsgAdol').value || "A definir";
 
             // Atualiza os textos no cartão de preview
             document.getElementById('outLouvor0a3').innerText = louvor0a3;
             document.getElementById('outMsg0a3').innerText = msg0a3;
-            document.getElementById('outSub0a3').innerText = sub0a3;
+            document.getElementById('outPrepLouvor0a3').innerText = prepLouvor0a3;
+            document.getElementById('outPrepMsg0a3').innerText = prepMsg0a3;
             
             document.getElementById('outLouvorCriancas').innerText = louvorCriancas;
             document.getElementById('outMsgCriancas').innerText = msgCriancas;
-            document.getElementById('outSubCriancas').innerText = subCriancas;
+            document.getElementById('outPrepLouvorCriancas').innerText = prepLouvorCriancas;
+            document.getElementById('outPrepMsgCriancas').innerText = prepMsgCriancas;
             
             document.getElementById('outLouvorInter').innerText = louvorInter;
             document.getElementById('outMsgInter').innerText = msgInter;
-            document.getElementById('outSubInter').innerText = subInter;
+            document.getElementById('outPrepLouvorInter').innerText = prepLouvorInter;
+            document.getElementById('outPrepMsgInter').innerText = prepMsgInter;
             
             document.getElementById('outLouvorAdol').innerText = louvorAdol;
             document.getElementById('outMsgAdol').innerText = msgAdol;
-            document.getElementById('outSubAdol').innerText = subAdol;
+            document.getElementById('outPrepLouvorAdol').innerText = prepLouvorAdol;
+            document.getElementById('outPrepMsgAdol').innerText = prepMsgAdol;
 
             // Rola a tela suavemente até o cartão
             document.getElementById('cartaoParaImagem').scrollIntoView({ behavior: 'smooth', block: 'center' });
